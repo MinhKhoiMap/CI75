@@ -1,0 +1,32 @@
+.card {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.card-red {
+    background-color: red;
+}
+
+.card-green {
+    background-color: green;
+}
+
+.card-yellow {
+    background-color: yellow;
+}
+
+.light {
+    margin: 0 10px;
+    width: 64px;
+    height: 64px;
+    border: 2px solid #000;
+    transition: all .2s ease;
+}
+
+button {
+    padding: 12px;
+    margin-left: 60px;
+    font-size: 18px;
+}

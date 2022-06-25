@@ -1,10 +1,11 @@
 import './App.css';
+import React, { useState } from 'react';
+import Card from './components/Card';
 // import Button from './Homework1/Button/Button'
 // import Title from './Homework1/Title/Title'
 // import ContentSection from './Homework1/ContentSection/ContentSection';
-import Product from './Homework2/Product/Product';
-import User from './Homework2/User/User';
-
+// import Product from './Homework2/Product/Product';
+// import User from './Homework2/User/User';
 
 
 let dataUser = [
@@ -484,27 +485,65 @@ let products = [
 ];
 
 function App() {
+
+  const handleCirleOrSquare = () => {
+    const divArr = [];
+    for (let i = 1; i < 7; i++) {
+      if (i % 2 === 0) divArr.push(<div className="circle"></div>)
+      else divArr.push(<div className="square"></div>);
+    }
+    return divArr;
+  }
+
+  const lights = ['pink', 'purple', 'green', 'black', 'orange', 'yellow', 'red'];
+  const [mode, setMode] = useState(1);
+
+  const handleChangeDivColor = (index) => {
+    setMode(prev => {
+      if (prev === 7) return prev = 1;
+      else return prev + 1;
+    })
+  }
+
+  const [shape, setShape] = useState('square');
+
+  const handleChangeDivShape = () => {
+    setShape(prev => {
+      if (prev === 'square') return prev = 'circle';
+      else return prev = 'square';
+    })
+  }
+
   return (
     <>
       <div>
         <h1>Bài 1</h1>
-        <div className="user__container">
-          {
-            dataUser.map((user, index) => (
-              <User data={user} id={index} />
-            ))
-          }
-        </div>
+        <section>
+          {/* Homeword day3 */}
+          {handleCirleOrSquare()}
+        </section>
       </div>
       <div>
         <h1>Bài 2</h1>
-        <div className="product__container">
-        {
-            products.map((product, index) => (
-              <Product data={product} id={index} />
+        <button onClick={handleChangeDivColor}>Change Color</button>
+        <section>
+          {
+            lights.map((light, index) => (
+              <span 
+                className="light" 
+                key={light} 
+                style={{ backgroundColor: `${index + 1 === mode ? light : 'transparent'}` }}>
+              </span>
             ))
           }
-        </div>
+        </section>
+      </div>
+      <div>
+        <h1>Bài 3</h1>
+        <button onClick={handleChangeDivShape}>Change Shape</button>
+        <section>
+          {<span className={shape}></span>}
+        </section>
       </div>
     </>
   );
@@ -563,3 +602,24 @@ export default App;
       </div>
 
 */}
+
+{/* <div>
+        <h1>Bài 1</h1>
+        <div className="user__container">
+          {
+            dataUser.map((user, index) => (
+              <User data={user} id={index} />
+            ))
+          }
+        </div>
+      </div>
+      <div>
+        <h1>Bài 2</h1>
+        <div className="product__container">
+        {
+            products.map((product, index) => (
+              <Product data={product} id={index} />
+            ))
+          }
+        </div>
+      </div> */}
