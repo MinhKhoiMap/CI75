@@ -1,17 +1,11 @@
-import React from 'react'
-import { useState} from 'react'
+import { React, useState } from 'react'
 import './Card.css'
-
-
 
 
 const Card = ({ title, func }) => {
     return (
         <div>
-            <h1>{title}</h1>
-            <section>
-                {func()}
-            </section>  
+            <input type="checkbox" name="title" checked={title} />
         </div>
     )
 }

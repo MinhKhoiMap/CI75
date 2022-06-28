@@ -1,32 +1,93 @@
-body {
-    padding-left: 20px;
-    padding-top: 6px;
+.main__container {
+    max-width: 480px;
+    min-height: 500px;
+    padding: 40px;
+    background-color: #F86166;
 }
 
-.user__container {
+.title {
+    font-family: 'Lobster', cursive;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.input__wrapper {
+    margin-bottom: 30px;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.product__container {
-    padding: 40px 80px;
-} 
+.input__task {
+    margin-right: 10px;
+    width: 280px;
+    padding-left: 8px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background-color: transparent;
+}
 
-section {
-    margin-top: 40px;
+.input__task::placeholder {
+    color: #fff;
+    font-size: 14px;
+}
+
+.add-task-btn {
+    padding: 14px 20px 10px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 5px;
+}
+
+.add-task-btn:hover {
+    box-shadow: 0 0 10px #fff;
+    cursor: pointer;
+}
+
+.toDo-list {
+    width: 100%;
+    list-style-type: none;
+}
+
+.toDo-list__task {
+    margin-top: 6px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-bottom: 3px solid #fff;
     display: flex;
+    align-items: center;
 }
 
-.square {
-    margin: 0 20px;
-    width: 64px;
-    height: 64px;
-    border: 2px solid #000;
+.toDo-list__task-status {
+    width: 16px;
+    height: 16px;
 }
 
-.circle {
-    width: 64px;
-    height: 64px;
-    border: 2px solid palevioletred;
+.toDo-list__task-text {
+    font-family: 'Josefin Sans', sans-serif;
+    flex: 1;
+    margin: 0 10px;
+    word-break: break-all;
+    line-height: 1.6;
+}
+
+.toDo-list__task-remove-btn {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+    background-color: red;
+    border: none;
     border-radius: 50%;
+    font-weight: 600;
+    cursor: pointer;
 }
