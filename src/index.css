@@ -5,9 +5,3 @@
   margin: 0;
   box-sizing: border-box;
 }
-
-body {
-  padding: 30px;
-  display: flex;
-  justify-content: center;
-}
