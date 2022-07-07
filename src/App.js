@@ -1,35 +1,42 @@
-import { useState } from 'react';
-import './App.css';
-import CallAPIBtn from "./components/CallAPIBtn";
-import Products from "./components/Products";
-
-import { Puff } from 'react-loader-spinner';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import ProductDetail from "./components/ProductDetail";
+import Home from "./components/HomePage";
+import Header from "./components/Header";
+import ToTopBtn from "./components/ToTopBtn";
 
 function App() {
-  const APIUrl = 'https://fakestoreapi.com/products';
-  const [products, setProducts] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [visible, setVisible] = useState(false);
 
-  const handleShowProducts = async () => {
-    setIsLoading(true);
-    const response = await fetch(APIUrl);
-    const data = await response.json();
-    setProducts(data);
-    setIsLoading(false);
-  }
+  const handleScroll = () => {
+    if (document.documentElement.scrollTop > 0) setVisible(true);
+    else setVisible(false);
+  };
+
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
 
   return (
     <>
-      {
-        isLoading && (
-          <div className="loading-spinner">
-            <Puff color="white" height={70} width={70}/>
-          </div>
-        )
-      }
-      {products ? (<Products productList={products} />) : (<CallAPIBtn func={handleShowProducts} />)}
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path=":productId" element={<ProductDetail />} />
+        </Routes>
+      </BrowserRouter>
+      {visible && <ToTopBtn handleToTop={handleScrollToTop}/>}
     </>
   );
 }
