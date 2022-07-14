@@ -1,6 +1,0 @@
-.title:nth-child(2n) {
-    color: blue;
-}
-.title:nth-child(2n+1) {
-    color: red;
-}
